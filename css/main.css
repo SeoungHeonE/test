@@ -1,0 +1,252 @@
+/* 전체 페이지에 반응형 스타일 적용 */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Pretendard-Regular';
+    background: linear-gradient(135deg, #ffafbd, #ffc3a0); /* 분홍색 파스텔톤 그라데이션 */
+}
+
+/* 팝업 스타일 */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 아래에서 튀어오르는 느낌을 위해 위치 조정 */
+    background: white;
+    padding: 5vw;
+    border-radius: 15px; /* 모서리를 더 부드럽게 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* 그림자 효과를 더 부드럽게 */
+    text-align: center;
+    width: 90vw;
+    max-width: 500px;
+    box-sizing: border-box;
+    animation: bounceIn 0.6s ease; /* 튀어오르는 애니메이션 적용 */
+}
+
+.popup.show {
+    display: block;
+}
+
+/* Lottie 애니메이션을 위한 스타일 */
+.lottie {
+    width: 100px; /* Lottie 애니메이션 크기 조정 */
+    margin: 5% auto;
+}
+
+/* 텍스트 애니메이션 */
+h1, h2 {
+    font-size: 4vw;
+    margin: 1vw 0;
+    animation: popText 0.8s ease-out;
+    color: #333;
+}
+
+p, #questionText {
+    font-size: 4vw;
+    margin: 2vw 0;
+    color: #555; /* 텍스트 색상을 좀 더 부드럽게 */
+}
+
+/* 애니메이션 효과 */
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%); /* 시작 위치 */
+    }
+    60% {
+        opacity: 1;
+        transform: translate(-50%, -55%); /* 위로 튀어오르는 느낌 */
+    }
+    100% {
+        transform: translate(-50%, -50%); /* 시작 위치 */
+    }
+}
+
+@keyframes popText {
+    0% { transform: scale(0.8); opacity: 0; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+/* 버튼 스타일 */
+button {
+    margin-top: 5%;
+    padding: 2vw 4vw;
+    font-size: 4vw;
+    background-color: #ff6f61; /* 분홍색 계열의 버튼 색상 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* 버튼 호버 시 효과 */
+}
+
+button:hover {
+    background-color: #ff4c3b; /* 호버 시 색상 변경 */
+    transform: translateY(-2px); /* 호버 시 약간 위로 이동하는 효과 */
+}
+
+
+input[type="text"] {
+    width: 80%;
+    padding: 2vw;
+    font-size: 3vw;
+    margin-bottom: 3vw;
+    box-sizing: border-box;
+    border: 1px solid #ff6f61; /* 입력창 테두리 색상 */
+    border-radius: 5px; /* 입력창 모서리 부드럽게 */
+}
+
+/* 클릭(포커스) 효과 */
+input[type="text"]:focus {
+    background-color: #ffe5e5; /* 클릭 시 배경색 변경 (부드러운 분홍색) */
+    border-color: #ff4c3b; /* 클릭 시 테두리 색상 변경 */
+    outline: none; /* 기본 포커스 아웃라인 제거 */
+}
+
+
+/*************************************************************************************
+**************************************************************************************/
+
+/* 상단 고정 스타일 */
+.fixed-top {
+    position: fixed;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50vw;
+    max-width: 500px;
+    background-color: white;
+    padding: 10px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* 상단 그림자 효과 */
+    z-index: 1000; /* 다른 요소 위에 배치 */
+    
+    /* 컨테이너의 요소들을 중앙 정렬 */
+    display: flex;
+    flex-direction: row; /* 가로로 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    gap: 1vw; /* 버튼 간격 */
+}
+
+/* 음악 이미지와 버튼들 스타일 */
+.fixed-top .music-image img {
+    display: flex;
+    width: 10vw;
+    height: auto;
+    border-radius: 10%;
+    margin-right: 10px;
+    align-items: center;
+    justify-content: center; /* 가로 중앙 정렬 */
+}
+
+.fixed-top .controls {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 가로 중앙 정렬 */
+}
+
+/* 버튼 스타일 */
+.fixed-top button {
+    font-size: 3vw;
+    padding: 1vw;
+    margin-left: 5px;
+}
+
+/* 가사 텍스트 스타일 */
+.fixed-top .lyrics {
+    display: none;
+    font-size: 3vw;
+    padding: 10px;
+    color: #333;
+    text-align: center; /* 텍스트 중앙 정렬 */
+}
+
+
+.lyrics-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    background-size: cover; /* 이미지 크기를 오버레이에 맞게 조정 */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease;
+}
+
+
+.lyrics-black {
+    position: fixed;
+    display: flex; /* 플렉스박스를 사용하여 중앙 정렬 */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.lyrics-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lyrics-text {
+    font-size: 4vw; /* 폰트 크기를 줄여서 3줄이 잘 보이도록 조정 */
+    color: gray;
+    text-align: center;
+    white-space: pre-line; /* 줄바꿈 유지 */
+    z-index: 1; /* 텍스트가 배경보다 위에 위치하도록 설정 */
+    line-height: 1.5; /* 줄 간격 조정 */
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 5vw;
+    cursor: pointer;
+    z-index: 1;
+}
+
+
+/*************************************************************************************
+**************************************************************************************/
+
+
+
+/*************************************************************************************
+**************************************************************************************/
+
+
+
+
+/* 미디어 쿼리 */
+@media (orientation: landscape) {
+    .popup {
+        width: 70vw;
+    }
+}
+
+
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
