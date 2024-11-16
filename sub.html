@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You made my day</title>
+    <link rel="stylesheet" href="./css/sub.css">
+</head>
+
+<body>
+    <!-- 상단 고정 음원 플레이어 팝업 -->
+    <div class="popup music-player fixed-top" id="musicPlayerPopup">
+        <div class="music-image">
+            <img src="./img/SweetDreams.png" alt="음원 이미지" id="audioImage">
+        </div>
+        <div class="controls">
+            <div class="button-group">
+                <button id="playButton">▶︎</button>
+                <!-- <button id="toggleLyricsButton">가사 보기</button> -->
+            </div>
+            <!-- <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1"> -->
+        </div>
+    </div>
+
+    <!-- 가사 컨테이너 전체 화면 -->
+    <div id="lyricsOverlay" class="lyrics-overlay">
+        <img id="imagePlayer" src="./img/SweetDreams.png" alt="Album Image">
+    
+        <div class="lyrics-black">
+            <div id="lyricsText" class="lyrics-text"></div>
+    
+            <div id="songProgressContainer">
+                <div id="songInfo" class="song-info">
+                    <h3 id="albumName">Album Name</h3>
+                    <p id="artistName">Artist Name</p>
+                </div>
+                <div id="sliderProgress"></div>
+                <input type="range" id="audioRangeSlider" min="0" max="100" step="0.1" value="0">
+                <div class="time-display">
+                    <span id="currentTime">0:00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+    <audio id="audioPlayer" src="./music/SweetDreamsMyDear.mp3" loop></audio>
+
+    <!-- Lottie 웹 라이브러리 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+    <!-- html2canvas 라이브러리 추가 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <script src="./js/sub.js"></script>
+    <script src="./js/lyricsSub.js"></script>
+    <script src="./js/seekBar.js"></script>
+</body>
+
+</html>
